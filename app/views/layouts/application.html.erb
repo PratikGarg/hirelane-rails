@@ -7,6 +7,11 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
+	<script type="text/javascript">
+		var alert = "", notice = "";
+		var alert = '<%= alert %>';
+		var notice = '<%= notice %>';
+	</script>
 	<div id="wrapper">
 		<%= render partial: "shared/header" %>
 		
@@ -18,11 +23,5 @@
 		<%= render partial: "shared/footer" %>
 	</div>
 	<!-- /#wrapper -->
-
-
-
-
-
-
 </body>
 </html>
