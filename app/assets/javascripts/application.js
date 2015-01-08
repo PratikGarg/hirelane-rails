@@ -20,3 +20,28 @@
 //= require angular-ui-bootstrap-tpls
 //= require turbolinks
 //= require_tree .
+var successMessage = function(message){
+	notif({
+		type: "success",
+		msg: message,
+		position: "center",
+		opacity: 0.8
+	});
+};
+var errorMessage = function(message){
+	notif({
+		type: "error",
+		msg: message,
+		position: "center",
+		opacity: 0.8
+	});
+};
+var onload = function() {
+	if(typeof(alert) != 'undefined' && alert != ""){
+		errorMessage(alert);
+	};
+	if(typeof(notice) != 'undefined' && notice != ""){
+		successMessage(notice);
+	};
+};
+onload();
