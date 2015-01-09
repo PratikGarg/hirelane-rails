@@ -9,20 +9,22 @@
 </div>
 
 <script>
+
 new Morris.Area({
   element: 'myfirstchart',
   data: [
-    { y: 'July', Telephonic: 100, Coding: 90, Interview: 73 },
-    { y: 'August', Telephonic: 75,  Coding: 65, Interview: 52 },
-    { y: 'September', Telephonic: 50,  Coding: 40, Interview: 31  },
-    { y: 'October', Telephonic: 75,  Coding: 65, Interview: 44 },
-    { y: 'November', Telephonic: 50,  Coding: 40, Interview: 31 },
-    { y: 'December', Telephonic: 75,  Coding: 65, Interview: 12 },
-    { y: 'January', Telephonic: 100, Coding: 90, Interview: 67 }
+    { y: 'July', Telephonic: 100, Coding: 90, Interview: 73, Leadership : 2 },
+    { y: 'August', Telephonic: 75,  Coding: 65, Interview: 52, Leadership : 44 },
+    { y: 'September', Telephonic: 10,  Coding: 5, Interview: 3, Leadership : 1  },
+    { y: 'October', Telephonic: 75,  Coding: 65, Interview: 44, Leadership : 21 },
+    { y: 'November', Telephonic: 50,  Coding: 40, Interview: 31, Leadership : 10 },
+    { y: 'December', Telephonic: 75,  Coding: 65, Interview: 12, Leadership : 0 },
+    { y: 'January', Telephonic: 100, Coding: 70, Interview: 47, Leadership : 17 }
   ],
   parseTime: false,
   xkey: 'y',
-  ykeys: ['Telephonic', 'Coding', 'Interview'],
-  labels: ['Telephonic', 'Coding', 'Interview' ]
+  ykeys: ['Telephonic', 'Coding', 'Interview', 'Leadership'],
+  labels: ['Telephonic', 'Coding', 'Interview', 'Leadership' ]
+
 });
 </script>
