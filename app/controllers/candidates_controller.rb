@@ -22,6 +22,8 @@ class CandidatesController < ApplicationController
   # GET /candidates/1/edit
   def edit
     @users = User.all
+    @phases = Phase.all
+    @skills =  Skill.all
   end
 
   # POST /candidates
