@@ -15,51 +15,51 @@
     <h2 class="page-header">Interview Details</h2>
 
   </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+   Interview Report
  </div>
-   <div class="panel panel-primary">
-                        <div class="panel-heading">
-                           Interview Report
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#home-pills" data-toggle="tab">Overall</a>
-                                </li>
-                                <li><a href="#profile-pills" data-toggle="tab">Telephonic</a>
-                                </li>
-                                <li><a href="#messages-pills" data-toggle="tab">Coding</a>
-                                </li>
-                                <li><a href="#settings-pills" data-toggle="tab">Discussion</a>
-                                </li>
-                                <li><a href="#settings-pills" data-toggle="tab">Leadership</a>
-                                </li>
-                            </ul>
+ <!-- /.panel-heading -->
+ <div class="panel-body">
+  <!-- Nav tabs -->
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#home-pills" data-toggle="tab">Overall</a>
+    </li>
+    <li><a href="#profile-pills" data-toggle="tab">Telephonic</a>
+    </li>
+    <li><a href="#messages-pills" data-toggle="tab">Coding</a>
+    </li>
+    <li><a href="#settings-pills" data-toggle="tab">Discussion</a>
+    </li>
+    <li><a href="#settings-pills" data-toggle="tab">Leadership</a>
+    </li>
+  </ul>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active" id="home-pills">
-                               		</br>
-                                    
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="home-pills">
+    </br>
+    
 
-							<div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <th>Current Status</th>
-                                            <td>Not Yet Started</td>
-                                            <td colspan="3"><div>
-                                       <button type="button" class="btn btn-success">Start Process</button> &nbsp;&nbsp;
-    								   <button type="button" class="btn btn-warning disabled">Primary</button>
-    								   </div></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Resume Recived on</th>
-                                            <td colspan="4">14th November 2014</td>          
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> 	
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <tbody>
+          <tr>
+            <th>Current Status</th>
+            <td>Not Yet Started</td>
+            <td colspan="3"><div>
+             <button type="button" class="btn btn-success">Start Process</button> &nbsp;&nbsp;
+             <button type="button" class="btn btn-warning disabled">Primary</button>
+           </div></td>
+         </tr>
+         <tr>
+          <th>Resume Recived on</th>
+          <td colspan="4">14th November 2014</td>          
+        </tr>
+      </tbody>
+    </table>
+  </div> 	
 
 
 
@@ -67,107 +67,113 @@
 
 
 
-                                </div>
-                                <div class="tab-pane fade" id="profile-pills">
-                                    
-                                    </br>
-                                    
+</div>
+<div class="tab-pane fade" id="profile-pills">
+  
+</br>
 
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <th>Assigned By</th>
-                                            <td>Priyank</td>
-                                            <td colspan="2"><div>
-                                       <button type="button" class="btn btn-success">Update Assign By</button> &nbsp;&nbsp;
-                                       
-                                       </div></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Assigned To</th>
-                                            <td>Pratik</td>
-                                            <td colspan="2"><div>
-                                       <button type="button" class="btn btn-success">Update Assign To</button> &nbsp;&nbsp;
-                                       
-                                       </div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="form-group col-md-12">
-                                    <div>
-                                      <button type="button" class="btn btn-success">Save</button>
-                                    </div>
-                                  </div>
-                            </div>  
-                                </div>
-                                <div class="tab-pane fade" id="messages-pills">
-                                     </br>
-                                    
 
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <th>Assigned By</th>
-                                            <td>Priyank</td>
-                                            <td colspan="2"><div>
-                                       <button type="button" class="btn btn-success">Update Assign By</button> &nbsp;&nbsp;
-                                       
-                                       </div></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Assigned To</th>
-                                            <td>Pratik</td>
-                                            <td colspan="2"><div>
-                                       <button type="button" class="btn btn-success">Update Assign To</button> &nbsp;&nbsp;
-                                       
-                                       </div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="form-group col-md-12">
-                                    <div>
-                                      <button type="button" class="btn btn-success">Save</button>
-                                    </div>
-                                  </div>
-                            </div>  
-                                </div>
-                                <div class="tab-pane fade" id="settings-pills">
-                                     </br>
-                                    
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <th>Assigned By</th>
+        <td>
+          <select class="form-control">
+            <% @users.each do |user| %>
+            <option value="<%= user.id %>"><%= user.email %></option>
+            <% end %>
+          </select>
+        </td>
+        <td colspan="2"><div>
+         <button type="button" class="btn btn-success">Update Assign By</button> &nbsp;&nbsp;
+         
+       </div></td>
+     </tr>
+     <tr>
+      <th>Assigned To</th>
+      <td>Pratik</td>
+      <td colspan="2"><div>
+       <button type="button" class="btn btn-success">Update Assign To</button> &nbsp;&nbsp;
+       
+     </div></td>
+   </tr>
+ </tbody>
+</table>
+<div class="form-group col-md-12">
+  <div>
+    <button type="button" class="btn btn-success">Save</button>
+  </div>
+</div>
+</div>  
+</div>
+<div class="tab-pane fade" id="messages-pills">
+</br>
 
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <th>Assigned By</th>
-                                            <td>Priyank</td>
-                                            <td colspan="2"><div>
-                                       <button type="button" class="btn btn-success">Update Assign By</button> &nbsp;&nbsp;
-                                       
-                                       </div></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Assigned To</th>
-                                            <td>Pratik</td>
-                                            <td colspan="2"><div>
-                                       <button type="button" class="btn btn-success">Update Assign To</button> &nbsp;&nbsp;
-                                       
-                                       </div></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="form-group col-md-12">
-                                    <div>
-                                      <button type="button" class="btn btn-success">Save</button>
-                                    </div>
-                                  </div>
-                            </div>  
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <th>Assigned By</th>
+        <td>Priyank</td>
+        <td colspan="2"><div>
+         <button type="button" class="btn btn-success">Update Assign By</button> &nbsp;&nbsp;
+         
+       </div></td>
+     </tr>
+     <tr>
+      <th>Assigned To</th>
+      <td>Pratik</td>
+      <td colspan="2"><div>
+       <button type="button" class="btn btn-success">Update Assign To</button> &nbsp;&nbsp;
+       
+     </div></td>
+   </tr>
+ </tbody>
+</table>
+<div class="form-group col-md-12">
+  <div>
+    <button type="button" class="btn btn-success">Save</button>
+  </div>
+</div>
+</div>  
+</div>
+<div class="tab-pane fade" id="settings-pills">
+</br>
+
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <th>Assigned By</th>
+        <td>Priyank</td>
+        <td colspan="2"><div>
+         <button type="button" class="btn btn-success">Update Assign By</button> &nbsp;&nbsp;
+         
+       </div></td>
+     </tr>
+     <tr>
+      <th>Assigned To</th>
+      <td>Pratik</td>
+      <td colspan="2"><div>
+       <button type="button" class="btn btn-success">Update Assign To</button> &nbsp;&nbsp;
+       
+     </div></td>
+   </tr>
+ </tbody>
+</table>
+<div class="form-group col-md-12">
+  <div>
+    <button type="button" class="btn btn-success">Save</button>
+  </div>
+</div>
+</div>  
+</div>
+</div>
+</div>
+<!-- /.panel-body -->
+</div>
 </div>
 

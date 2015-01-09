@@ -20,6 +20,7 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /candidates
