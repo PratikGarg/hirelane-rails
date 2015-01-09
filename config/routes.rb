@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'knowledgebase/index'
+
   devise_for :users
   resources :candidates
 
