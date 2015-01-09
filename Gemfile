@@ -43,4 +43,5 @@ gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
 gem "font-awesome-rails"
 gem 'devise'
+gem "paperclip", "~> 4.2"
 

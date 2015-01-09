@@ -11,6 +11,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/1
   # GET /candidates/1.json
   def show
+    @users = User.all
   end
 
   # GET /candidates/new
@@ -42,9 +43,10 @@ class CandidatesController < ApplicationController
   # PATCH/PUT /candidates/1
   # PATCH/PUT /candidates/1.json
   def update
+     @users = User.all
     respond_to do |format|
       if @candidate.update(candidate_params)
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
+        format.html { redirect_to edit_candidate_url(@candidate.id), notice: 'Candidate was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidate }
       else
         format.html { render :edit }
@@ -71,6 +73,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :dob, :email, :phone, :exp)
+      params.require(:candidate).permit(:name, :dob, :email, :phone, :exp, :resume)
     end
 end
