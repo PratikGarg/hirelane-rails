@@ -9,6 +9,7 @@
 </div>
 
 <script>
+
 new Morris.Area({
   element: 'myfirstchart',
   data: [
@@ -23,6 +24,9 @@ new Morris.Area({
   parseTime: false,
   xkey: 'y',
   ykeys: ['Telephonic', 'Coding', 'Interview', 'Leadership'],
-  labels: ['Telephonic', 'Coding', 'Interview', 'Leadership' ]
+  labels: ['Telephonic', 'Coding', 'Interview', 'Leadership' ],
+  lineColors: ['#f00','#0f0', '#00f', '#000'],
+  pointFillColors: ['#f00','#0f0', '#00f', '#000']
+
 });
 </script>
