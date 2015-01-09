@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'scheduling/index'
+
+  get 'statistics/index'
+
   get 'knowledgebase/index'
 
   devise_for :users
