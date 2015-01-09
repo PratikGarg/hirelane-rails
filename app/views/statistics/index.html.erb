@@ -1,149 +1,135 @@
 <div class="row">
-  <div class="col-lg-12">
-    <h1 class="page-header">Statistics</h1>
-  </div>
+   <div class="col-lg-12">
+      <h1 class="page-header">Statistics</h1>
+   </div>
 </div>
 
-    <div style="width: 25%;margin: 0 auto;" class="panel panel-default">
-
-        <div class="panel-heading">Employee of the Month</div>
-          <div class="panel-body">
-            <div id = "maxEmployeeDiv" class="panel-body"></div>
-          </div>
-    </div>
- <br />
- <br />
-
-<div class="panel panel-default" style="width:100%;margin: 0 auto;">
-        <div class="panel-heading">Interviews taken by Employees</div>
-          <div class="panel-body">
-
- <div  style="width:210px;margin: 0 auto;"> 
-  <select name="currentYear" id="selectYear" value="2014" onchange="reloadData();" class="form-control" style="width:100px;float:left;">
-    <option value="2013">2013</option>
-    <option value="2014">2014</option>
-  </select>
-<select name="currentMonth" id="selectMonth" value = "January" onchange="reloadData();" class="form-control" style="width:100px;float:right;">
-  
-</select>
-
+<div class="panel panel-primary" style="width:75%;float:left;height:500px;">
+   <div class="panel-heading">Top Interview Takers</div>
+   <div class="panel-body">
+      <div>
+         <select name="currentYear" id="selectYear" value="2014" onchange="reloadData();" class="form-control" style="width:100px;float:left;">
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+         </select>
+         <select name="currentMonth" id="selectMonth" value = "January" onchange="reloadData();" class="form-control" style="width:150px;float:left;">
+         </select>
+      </div>
+      <br />
+      <br />
+      <div id="myfirstchart" style="margin: 0 auto;"></div>
+   </div>
 </div>
 
-<br />
-<br />
-<br />
-<br />
-
-
-<div id="myfirstchart" style="width:75%;margin: 0 auto;"></div>
-
+<div class="panel panel-green" style="width:25%;float:left;height:500px">
+<div class="panel-heading">Interviewer of the Month</div>
+      <div class="panel-body">
+         <div id = "maxEmployeeDiv" class="panel-body"></div>
 </div>
 </div>
 
 <br />
-<br />
 
-<div class="panel panel-default" style="width:100%;margin: 0 auto;">
-        <div class="panel-heading">Hirings in past 7 months</div>
-          <div class="panel-body">
-            <div id="mysecondchart"></div>
-          </div>
+<div class="panel panel-primary" style="width:100%;float:left">
+   <div class="panel-heading">Hirings in past 7 months</div>
+   <div class="panel-body">
+      <div id="mysecondchart"></div>
+   </div>
 </div>
 <br />
 <br />
-
 <script>
-var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-
-for (var i = 0; i < months.length; i++) {
-  var x = document.getElementById("selectMonth");
-  var option = document.createElement("option");
-  option.text = months[i];
-  option.value = months[i];
-  x.add(option);
-};
-
-var interviewers = [
-    { name: 'Deepak Bansal', imageURL:'<%=image_tag("1.jpg", size: "80x80")%>' },
-    { name: 'Balendra Singh', imageURL:'<%=image_tag("2.jpg", size: "80x80")%>' },
-    { name: 'Priyank Gupta',imageURL: '<%=image_tag("3.jpg", size: "80x80")%>' },
-    { name: 'Pratik Garg',imageURL: '<%=image_tag("4.jpg", size: "80x80")%>' },
-    { name: 'Vaibhav Sehgal', imageURL:'<%=image_tag("5.jpg", size: "80x80")%>' }];
-
-var allData = {};
-var yearlyData = {};
-for (var i = months.length - 1; i >= 0; i--) {
-  for (var j = interviewers.length - 1; j >= 0; j--) {
-    interviewers[j].value = Math.round(Math.random()*20);
-    };
-   yearlyData[months[i]] = jQuery.extend(true, {}, interviewers);
-};
-allData["2013"] = jQuery.extend(true, {}, yearlyData);
-for (var i = months.length - 1; i >= 0; i--) {
-  for (var j = interviewers.length - 1; j >= 0; j--) {
-    interviewers[j].value = Math.round(Math.random()*20);
-    };
-   yearlyData[months[i]] = jQuery.extend(true, {}, interviewers);
-};
-allData["2014"] = jQuery.extend(true, {}, yearlyData);
-var currentData = [];
-
-
-
-var barChart = new Morris.Bar({
-  // ID of the element in which to draw the chart.
-  element: 'myfirstchart',
-  // Chart data records -- each entry in this array corresponds to a point on
-  // the chart.
-  data: currentData,
-  // The name of the data record attribute that contains x-values.
-  xkey: 'name',
-  // A list of names of data record attributes that contain y-values.
-  ykeys: ['value'],
-  // Labels for the ykeys -- will be displayed when you hover over the
-  // chart.
-  labels: ['Interviews Taken:'],
-  hoverCallback: function (index, options, content, row) {
-  return row.imageURL;
-}});
-
-new Morris.Area({
-  element: 'mysecondchart',
-  data: [
-    { y: 'July', Telephonic: 100, Coding: 90, Interview: 73, Leadership : 2 },
-    { y: 'August', Telephonic: 75,  Coding: 65, Interview: 52, Leadership : 44 },
-    { y: 'September', Telephonic: 10,  Coding: 5, Interview: 3, Leadership : 1  },
-    { y: 'October', Telephonic: 75,  Coding: 65, Interview: 44, Leadership : 21 },
-    { y: 'November', Telephonic: 50,  Coding: 40, Interview: 31, Leadership : 10 },
-    { y: 'December', Telephonic: 75,  Coding: 65, Interview: 12, Leadership : 0 },
-    { y: 'January', Telephonic: 100, Coding: 70, Interview: 47, Leadership : 17 }
-  ],
-  parseTime: false,
-  xkey: 'y',
-  ykeys: ['Telephonic', 'Coding', 'Interview', 'Leadership'],
-  labels: ['Telephonic', 'Coding', 'Interview', 'Leadership' ]
-
-});
-
-var curentHighestInterviewer = {};
-
-var reloadData = function() {
-  //window.alert("asdf");
-  currentData =  $.map(allData[document.getElementById("selectYear").value][document.getElementById("selectMonth").value], function(el) { return el; });
-  barChart.setData(currentData);
-  var max = 0;
-  for (var i = currentData.length - 1; i >= 0; i--) {
-    if (max < currentData[i].value) {
-       curentHighestInterviewer = interviewers[i];
-       max = currentData[i].value;
-    }
-  };
-  document.getElementById("maxEmployeeDiv").innerHTML=curentHighestInterviewer.imageURL;
-  var img = document.getElementById("maxEmployeeDiv").getElementsByTagName("img")[0];
-  img.height = 200;
-  img.width = 200;
-};
-
-reloadData();
-</script> 
-
+   var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+   
+   for (var i = 0; i < months.length; i++) {
+     var x = document.getElementById("selectMonth");
+     var option = document.createElement("option");
+     option.text = months[i];
+     option.value = months[i];
+     x.add(option);
+   };
+   
+   var interviewers = [
+       { name: 'Deepak Bansal', imageURL:'<%=image_tag("1.jpg", size: "80x80")%>' },
+       { name: 'Balendra Singh', imageURL:'<%=image_tag("2.jpg", size: "80x80")%>' },
+       { name: 'Priyank Gupta',imageURL: '<%=image_tag("3.jpg", size: "80x80")%>' },
+       { name: 'Pratik Garg',imageURL: '<%=image_tag("4.jpg", size: "80x80")%>' },
+       { name: 'Vaibhav Sehgal', imageURL:'<%=image_tag("5.jpg", size: "80x80")%>' }];
+   
+   var allData = {};
+   var yearlyData = {};
+   for (var i = months.length - 1; i >= 0; i--) {
+     for (var j = interviewers.length - 1; j >= 0; j--) {
+       interviewers[j].value = Math.round(Math.random()*20);
+       };
+      yearlyData[months[i]] = jQuery.extend(true, {}, interviewers);
+   };
+   allData["2013"] = jQuery.extend(true, {}, yearlyData);
+   for (var i = months.length - 1; i >= 0; i--) {
+     for (var j = interviewers.length - 1; j >= 0; j--) {
+       interviewers[j].value = Math.round(Math.random()*20);
+       };
+      yearlyData[months[i]] = jQuery.extend(true, {}, interviewers);
+   };
+   allData["2014"] = jQuery.extend(true, {}, yearlyData);
+   var currentData = [];
+   
+   
+   
+   var barChart = new Morris.Bar({
+     // ID of the element in which to draw the chart.
+     element: 'myfirstchart',
+     // Chart data records -- each entry in this array corresponds to a point on
+     // the chart.
+     data: currentData,
+     // The name of the data record attribute that contains x-values.
+     xkey: 'name',
+     // A list of names of data record attributes that contain y-values.
+     ykeys: ['value'],
+     // Labels for the ykeys -- will be displayed when you hover over the
+     // chart.
+     labels: ['Interviews Taken:'],
+     hoverCallback: function (index, options, content, row) {
+     return row.imageURL;
+   }});
+   
+   new Morris.Area({
+     element: 'mysecondchart',
+     data: [
+       { y: 'July', Telephonic: 100, Coding: 90, Interview: 73, Leadership : 2 },
+       { y: 'August', Telephonic: 75,  Coding: 65, Interview: 52, Leadership : 44 },
+       { y: 'September', Telephonic: 10,  Coding: 5, Interview: 3, Leadership : 1  },
+       { y: 'October', Telephonic: 75,  Coding: 65, Interview: 44, Leadership : 21 },
+       { y: 'November', Telephonic: 50,  Coding: 40, Interview: 31, Leadership : 10 },
+       { y: 'December', Telephonic: 75,  Coding: 65, Interview: 12, Leadership : 0 },
+       { y: 'January', Telephonic: 100, Coding: 70, Interview: 47, Leadership : 17 }
+     ],
+     parseTime: false,
+     xkey: 'y',
+     ykeys: ['Telephonic', 'Coding', 'Interview', 'Leadership'],
+     labels: ['Telephonic', 'Coding', 'Interview', 'Leadership' ]
+   
+   });
+   
+   var curentHighestInterviewer = {};
+   
+   var reloadData = function() {
+     //window.alert("asdf");
+     currentData =  $.map(allData[document.getElementById("selectYear").value][document.getElementById("selectMonth").value], function(el) { return el; });
+     barChart.setData(currentData);
+     var max = 0;
+     for (var i = currentData.length - 1; i >= 0; i--) {
+       if (max < currentData[i].value) {
+          curentHighestInterviewer = interviewers[i];
+          max = currentData[i].value;
+       }
+     };
+     document.getElementById("maxEmployeeDiv").innerHTML = curentHighestInterviewer.imageURL + 
+     "<br/><br/><h3>" + curentHighestInterviewer.name + "</h3>";
+     var img = document.getElementById("maxEmployeeDiv").getElementsByTagName("img")[0];
+     img.height = 200;
+     img.width = 200;
+   };
+   
+   reloadData();
+</script>
