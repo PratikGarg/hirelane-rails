@@ -5,6 +5,13 @@
   </div>
   <!-- /.col-lg-12 -->
 </div>
+<%= link_to "+ Add Candidate",
+new_candidate_path,
+:class => 'btn btn-primary' %> <br/><br/>
+
+<div class="panel panel-info">
+<div class="panel-heading"> Candidates List</div>
+<div class="panel-body">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -41,7 +48,6 @@
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-new_candidate_path,
-:class => 'btn btn-primary' %>

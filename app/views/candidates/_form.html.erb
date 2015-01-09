@@ -1,62 +1,71 @@
 <%= form_for @candidate, :html => { :class => "form-horizontal candidate" } do |f| %>
 
-  <% if @candidate.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @candidate.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+<% if @candidate.errors.any? %>
+<div id="error_expl" class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% @candidate.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
 
-  <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :name, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:name) %>
+<div class="form-group col-md-6">
+  <%= f.label :name, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10">
+    <%= f.text_field :name, :class => 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :dob, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :dob, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:dob) %>
+  <%=f.error_span(:name) %>
+</div>
+<div class="form-group  col-md-6" >
+  <%= f.label :dob, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10 input-group">
+  <%= f.date_field :dob, :class => 'form-control dateField datepicker' %>
+    <span class="input-group-addon">
+      <i class="fa fa-calendar"></i>
+    </span>
   </div>
-  <div class="form-group">
-    <%= f.label :email, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :email, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:email) %>
+  <%=f.error_span(:dob) %>
+</div>
+<div class="form-group col-md-6">
+  <%= f.label :email, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10">
+    <%= f.text_field :email, :class => 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :phone, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :phone, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:phone) %>
+  <%=f.error_span(:email) %>
+</div>
+<div class="form-group col-md-6">
+  <%= f.label :phone, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10">
+    <%= f.text_field :phone, :class => 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :exp, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :exp, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:exp) %>
+  <%=f.error_span(:phone) %>
+</div>
+<div class="form-group col-md-6">
+  <%= f.label "Experience", :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10">
+    <%= f.text_field :exp, :class => 'form-control' %>
   </div>
+  <%=f.error_span(:exp) %>
+</div>
 
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                candidates_path, :class => 'btn btn-default' %>
-    </div>
+<div class="gap15"></div>
+<div class="form-group col-md-12">
+  <div class="col-lg-10">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+    candidates_path, :class => 'btn btn-default' %>
   </div>
-
+</div>
+<script type="text/javascript">
+  $('.datepicker').datepicker({
+    format : "yyyy-mm-dd"
+  }
+  );
+</script>
 <% end %>
