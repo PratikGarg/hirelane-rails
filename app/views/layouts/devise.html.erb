@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HireLane</title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<script type="text/javascript">
+		var alert = "", notice = "";
+		var alert = '<%= alert %>';
+		var notice = '<%= notice %>';
+	</script>
+	<div class="row">
+		<div class="container">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 border-me"><%= yield %></div>
+			<div class="col-md-3"></div>
+		</div>
+		
+	</div>
+</body>
+</html>

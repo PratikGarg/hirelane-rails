@@ -14,3 +14,7 @@
  *= require_tree .
  *= require_self
  */
+.border-me{
+	border: 4px solid #ddd;
+	margin: 15px;
+}
