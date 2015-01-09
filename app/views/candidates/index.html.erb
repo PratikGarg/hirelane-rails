@@ -22,6 +22,7 @@ new_candidate_path,
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:exp) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Resume</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -30,11 +31,18 @@ new_candidate_path,
     <tr>
       <td><%= link_to candidate.id, candidate_path(candidate) %></td>
       <td><%= candidate.name %></td>
-      <td><%= candidate.dob %></td>
+      <td><%= l(candidate.dob, :format => "%d-%m-%Y") %></td>
       <td><%= candidate.email %></td>
       <td><%= candidate.phone %></td>
       <td><%= candidate.exp %></td>
-      <td><%=l candidate.created_at %></td>
+      <td><%= l(candidate.created_at, :format => "%e %b %Y %H:%M %p") %></td>
+      <td><% if candidate.resume.present? %>
+           <%= link_to candidate.resume.original_filename, candidate.resume.url %>
+           <% else %>
+           <%= "No Resume" %>
+           <% end %>
+
+     </td>
       <td>
         <%= link_to t('.edit', :default => t("helpers.links.edit")),
         edit_candidate_path(candidate), :class => 'btn btn-default btn-xs' %>
