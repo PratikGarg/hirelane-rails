@@ -125,7 +125,10 @@
        }
      };
      document.getElementById("maxEmployeeDiv").innerHTML = curentHighestInterviewer.imageURL + 
-     "<br/><br/><h3>" + curentHighestInterviewer.name + "</h3>";
+     "<br/><br/><h3>" + curentHighestInterviewer.name + 
+     "</h3><h4>Principal Consultant <br/> Interviews Taken : " + 
+     curentHighestInterviewer.value + "</h4>";
+     
      var img = document.getElementById("maxEmployeeDiv").getElementsByTagName("img")[0];
      img.height = 200;
      img.width = 200;
