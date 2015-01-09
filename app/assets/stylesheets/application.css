@@ -13,6 +13,7 @@
  *= require font-awesome
  *= require_tree .
  *= require_self
+ *= morris 
  */
 .border-me{
 	border: 4px solid #ddd;

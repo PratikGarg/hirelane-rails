@@ -19,6 +19,7 @@
 //= require angular-ui-bootstrap
 //= require angular-ui-bootstrap-tpls
 //= require turbolinks
+//= require morris
 //= require_tree .
 var successMessage = function(message){
 	notif({
