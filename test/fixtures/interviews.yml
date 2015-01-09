@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candidate_id: 1
+  phase_id: 1
+  position: MyString
+  status: MyString
+
+two:
+  candidate_id: 1
+  phase_id: 1
+  position: MyString
+  status: MyString
