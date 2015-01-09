@@ -37,7 +37,7 @@
          </div></td>
        </tr>
        <tr>
-        <th>Resume Recived on</th>
+        <th>Resume Recieved on</th>
         <td colspan="4"><%= @candidate.created_at%></td>        
       </tr>
       <tr>
@@ -48,12 +48,7 @@
        </td>        
      </tr>
 
-       <tr>
-        <th>Assign interview to</th>
-        <td colspan="4">
-         <%= select_tag(:user_id, options_from_collection_for_select(@users, :id, :email), :class => 'form-control' ) %>
-       </td>        
-     </tr>
+       
 
    </tbody>
  </table>
@@ -87,6 +82,21 @@
 
   <% if index == 0 %>
   <div class="tab-pane fade in active" id="phase_<%= index%>">
+
+  <div>
+  <table class="table table-bordered table-striped" style="width: 400px;">
+          <tbody>
+    <tr>
+    <th style="width: 25%; vertical-align: middle;">Assign To</th>        
+    <td>
+         <%= select_tag(:user_id, options_from_collection_for_select(@users, :id, :email), {:class => 'form-control', :style => ' float: left; width: 200px; ' }) %>
+         <button type="button" class="btn btn-success" style=" float: right; ">Assign</button>         
+       </td>
+
+     </tr>
+     </tbody>
+     </table>
+  </div>
     <%else %>
     <div class="tab-pane fade" id="phase_<%= index%>">
       <% end %>
