@@ -25,6 +25,12 @@
   <!-- Nav tabs -->
   <%= form_for @candidate do |f|%>
   <%= f.fields_for :interview do |itr| %>
+  <% interviewDisabled = ""%>
+  <% interviewNotDisabled = "disabled"%>
+  <% if @candidate.interview.status != 'NOT_PROCESSED'%>
+  <% interviewDisabled = "disabled"%>
+  <% interviewNotDisabled = ""%>
+  <%  end%>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <tbody>
@@ -32,8 +38,8 @@
           <th>Current Status</th>
           <td><%= itr.object.status %></td>
           <td colspan="3"><div>
-           <button type="button" class="btn btn-success">Start Process</button> &nbsp;&nbsp;
-           <button type="button" class="btn btn-warning disabled">Complete Process</button>
+           <button type="submit" <%=interviewDisabled%> class="btn btn-success <%=interviewDisabled%>">Start Process</button> &nbsp;&nbsp;
+           <button type="submit" <%=interviewNotDisabled%> class="btn btn-warning <%=interviewNotDisabled%>">Complete Process</button>
          </div></td>
        </tr>
        <tr>
@@ -43,16 +49,18 @@
       <tr>
         <th>Position Considered for</th>
         <td colspan="4">
-         <%= select_tag(:position, options_for_select([['Consultant', 'cons'], ['Sr. Consultant', 'sr_cons'],['Principal Consultant', 'principal'],  ['Sr. Principal Consultant', 'sr_principal']]), :class => 'form-control' ) %>
+         <%= itr.select(:position, options_for_select([['Consultant', 'cons'], ['Sr. Consultant', 'sr_cons'],['Principal Consultant', 'principal'],  ['Sr. Principal Consultant', 'sr_principal']]), {}, {:class => 'form-control'}) %>
 
        </td>        
      </tr>
-
-       
-
    </tbody>
  </table>
 </div>
+<% if @candidate.interview.status == 'NOT_PROCESSED'%>
+<input type="hidden" value="IN_PROGRESS" name="candidate[interview_attributes][status]">
+<% elsif @candidate.interview.status == 'IN_PROGRESS'%>
+<input type="hidden" value="COMPLETED" name="candidate[interview_attributes][status]">
+<% end%>
 <% end %>
 <% end %>
 
@@ -82,61 +90,64 @@
 
   <% if index == 0 %>
   <div class="tab-pane fade in active" id="phase_<%= index%>">
-
-  <div>
-  <table class="table table-bordered table-striped" style="width: 400px;">
-          <tbody>
-    <tr>
-    <th style="width: 25%; vertical-align: middle;">Assign To</th>        
-    <td>
-         <%= select_tag(:user_id, options_from_collection_for_select(@users, :id, :email), {:class => 'form-control', :style => ' float: left; width: 200px; ' }) %>
-         <button type="button" class="btn btn-success" style=" float: right; ">Assign</button>         
-       </td>
-
-     </tr>
-     </tbody>
-     </table>
-  </div>
-    <%else %>
-    <div class="tab-pane fade" id="phase_<%= index%>">
-      <% end %>
-
-
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <tbody>
-            <tr>
-              <th>skills</th>
-              <th>Rating</th>
-            </tr>
-
-            <% phase.skill.each_with_index do |skill, index| %>
-
-            <tr>
-             <td>
-              <%= skill.name %>
-
-            </td>
+   <%else %>
+   <div class="tab-pane fade" id="phase_<%= index%>">
+    <% end %>
+    <div>
+      <%= form_for :pipeline, url: pipelines_url do |f| %>
+      <table class="table table-bordered table-striped" style="width: 400px;">
+        <tbody>
+          <tr>
+            <th style="width: 25%; vertical-align: middle;">Assign To</th>        
             <td>
-             <select class="form-control col-md-1">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-               <option>4</option>
-               <option>5</option>
-             </select>
-
+             <%= select_tag("pipeline[user_id]", options_from_collection_for_select(@users, :id, :email), {:class => 'form-control', :style => ' float: left; width: 200px; ' }) %>
+             <button type="submit" class="btn btn-success" style=" float: right; ">Assign</button>         
            </td>
+
          </tr>
-
-         <% end %>
-
        </tbody>
      </table>
+     <input type="hidden" name="pipeline[phase_id]" value="<%=phase.id %>"/>
+     <input type="hidden" name="pipeline[status]" value="STARTED"/>
+     <input type="hidden" name="pipeline[candidate_id]" value="<%=@candidate.id%>"/>
+     <% end %>
+   </div>
 
-   </div>  
- </div>
- <%end %>
+   <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <tbody>
+        <tr>
+          <th>skills</th>
+          <th>Rating</th>
+        </tr>
+
+        <% phase.skill.each_with_index do |skill, index| %>
+
+        <tr>
+         <td>
+          <%= skill.name %>
+
+        </td>
+        <td>
+         <select class="form-control col-md-1">
+           <option>1</option>
+           <option>2</option>
+           <option>3</option>
+           <option>4</option>
+           <option>5</option>
+         </select>
+
+       </td>
+     </tr>
+
+     <% end %>
+
+   </tbody>
+ </table>
+
+</div>  
+</div>
+<%end %>
 </div>
 
 

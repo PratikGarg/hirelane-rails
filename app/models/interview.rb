@@ -1,7 +1,7 @@
 class Interview < ActiveRecord::Base
 	belongs_to :user
 
-	before_save :set_status
+	before_create :set_status
 
 
 	def set_status

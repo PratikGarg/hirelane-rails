@@ -45,17 +45,17 @@ class CandidatesController < ApplicationController
   # PATCH/PUT /candidates/1
   # PATCH/PUT /candidates/1.json
   def update
-     @users = User.all
-    respond_to do |format|
-      if @candidate.update(candidate_params)
-        format.html { redirect_to edit_candidate_url(@candidate.id), notice: 'Candidate was successfully updated.' }
-        format.json { render :show, status: :ok, location: @candidate }
-      else
-        format.html { render :edit }
-        format.json { render json: @candidate.errors, status: :unprocessable_entity }
-      end
+   @users = User.all
+   respond_to do |format|
+    if @candidate.update(candidate_params)
+      format.html { redirect_to edit_candidate_url(@candidate.id), notice: 'Candidate was successfully updated.' }
+      format.json { render :show, status: :ok, location: @candidate }
+    else
+      format.html { render :edit }
+      format.json { render json: @candidate.errors, status: :unprocessable_entity }
     end
   end
+end
 
   # DELETE /candidates/1
   # DELETE /candidates/1.json
@@ -75,6 +75,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :dob, :email, :phone, :exp, :resume)
+      params.require(:candidate).permit(:name, :dob, :email, :phone, :exp, :resume, interview_attributes: [:user_id, :status, :position, :phase_id, :id])
     end
-end
+  end
