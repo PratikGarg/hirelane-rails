@@ -5,12 +5,14 @@ class Candidate < ActiveRecord::Base
 	has_many :pipeline
 
 	before_create :add_empty_interview
- 
-	validates_attachment :resume, content_type: { content_type: ["text/plain", "application/pdf", "application/msword"] }
-	accepts_nested_attributes_for :interview
 
-	def add_empty_interview
-		self.build_interview
+	validates_attachment :resume, content_type: { 
+		content_type: ["text/plain", "application/pdf", "application/msword", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"] 
+		}
+		accepts_nested_attributes_for :interview
+
+		def add_empty_interview
+			self.build_interview
+		end
+
 	end
-
-end

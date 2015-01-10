@@ -100,15 +100,15 @@
     <div class="panel-heading" style="height:50px">
         <b> Candidates Pipeline</b>
         <span style="float:right;">
-                            <button type="button" class="btn btn-success btn-circle" style="background-color:#5bc0de;border-color:#5bc0de"><i class="fa fa-clock-o"></i>
-                            </button>&nbsp;In Progress&nbsp;
-                            <button type="button" class="btn btn-info btn-circle" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
-                            </button>&nbsp;Cleared&nbsp;
-                             <button type="button" class="btn btn-warning btn-circle" style="background-color:#d9534f;border-color:#d9534f"><i class="fa fa-times"></i>
-                            </button>&nbsp;Failed&nbsp;
-                             <button type="button" class="btn btn-warning btn-circle" style="background-color:grey;border-color:grey"><i class="fa fa-times"></i>
-                            </button>&nbsp;N/A&nbsp;
-                            </span>
+            <button type="button" class="btn btn-success btn-circle" style="background-color:#5bc0de;border-color:#5bc0de"><i class="fa fa-clock-o"></i>
+            </button>&nbsp;In Progress&nbsp;
+            <button type="button" class="btn btn-info btn-circle" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+            </button>&nbsp;Cleared&nbsp;
+            <button type="button" class="btn btn-warning btn-circle" style="background-color:#d9534f;border-color:#d9534f"><i class="fa fa-times"></i>
+            </button>&nbsp;Failed&nbsp;
+            <button type="button" class="btn btn-warning btn-circle" style="background-color:grey;border-color:grey"><i class="fa fa-times"></i>
+            </button>&nbsp;N/A&nbsp;
+        </span>
     </div>
 
     <!-- /.panel-heading -->
@@ -122,81 +122,104 @@
                             <thead style="text-align:center;color:#31708f;font-size:14px;font-weight:bold">
                                 <td style="text-align:left" bgcolor="#d9edf7">
                                     Brief</td>
-                                <td bgcolor="#d9edf7">Telephonic</td>
-                                <td bgcolor="#d9edf7">Coding</td>
-                                <td bgcolor="#d9edf7">Interview</td>
-                                <td bgcolor="#d9edf7">Leadership</td>
+                                    <td bgcolor="#d9edf7">Telephonic</td>
+                                    <td bgcolor="#d9edf7">Coding</td>
+                                    <td bgcolor="#d9edf7">Interview</td>
+                                    <td bgcolor="#d9edf7">Leadership</td>
 
-                            </thead>
+                                </thead>
+                                <tr style="text-align:center">
+                                    <td style="text-align:left" width="300px">
+                                        <b>Deepak Bansal</b> working at <b>Google.</b>
+                                        <br/>
+                                        <b>10 years</b> primarily in <b> Java/J2ee.</b>
+                                        <br/>
+                                        <b>B.Tech</b> in <b>Computers</b>
+                                        <br/>
+                                        <b>15 days</b> elapsed.
+                                        <br/>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa  fa-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <% @candidates.each_with_index do |candidate| %>
                             <tr style="text-align:center">
-                                <td style="text-align:left" width="300px">
-                                    <b>Deepak Bansal</b> working at <b>Google.</b>
-                                    <br/>
-                                    <b>10 years</b> primarily in <b> Java/J2ee.</b>
-                                    <br/>
-                                    <b>B.Tech</b> in <b>Computers</b>
-                                    <br/>
-                                    <b>15 days</b> elapsed.
-                                    <br/>
-
-                </div>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-warning btn-circle btn-lg" style="background-color:#d9534f;border-color:#d9534f"><i class="fa fa-times"></i>
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:grey;border-color:grey"><i class="fa fa-times"></i>
-                    </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5bc0de;border-color:#5bc0de"><i class="fa  fa-clock-o"></i>
-                    </button>
-                </td>
-                </tr>
-            <% @candidates.each do |candidate| %>
-                <tr style="text-align:center">
-                    <td style="text-align:left">
-                         <b><%= candidate.name %></b> working at <b>Macrosoft.</b>
-                                    <br/>
-                                    <b><%= candidate.exp %> years</b> primarily in <b> HTML.</b>
-                                    <br/>
-                                    <b>M.Tech</b> in <b>Computers</b>
-                                    <br/>
-                                    <b>54 days</b> elapsed.
-                                    <br/>
+                                <td style="text-align:left">
+                                   <b><%= candidate.name %></b> working at <b>Macrosoft.</b>
+                                   <br/>
+                                   <b><%= candidate.exp %> years</b> primarily in <b> HTML.</b>
+                                   <br/>
+                                   <b>M.Tech</b> in <b>Computers</b>
+                                   <br/>
+                                   <b>54 days</b> elapsed.
+                                   <br/>
 
 
-            </div>
-            </td>
-            <td>
-                <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
-                </button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-warning btn-circle btn-lg" style="background-color:#d9534f;border-color:#d9534f"><i class="fa fa-times"></i>
-                </button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5bc0de;border-color:#5bc0de"><i class="fa fa-times"></i>
-                </button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5bc0de;border-color:#5bc0de"><i class="fa fa-times"></i>
-                </button>
-            </td>
-            </tr>
-            <% end %>
-            
-</tbody>
-</table>
-</div>
-<!-- /.table-responsive -->
-</div>
+                               </div>
+                           </td>
+                           <% if cycle('odd', 'even') == 'odd' %>
+                           <td>
+                            <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5bc0de;border-color:#5bc0de"><i class="fa fa-clock-o"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button style="background-color:grey;border-color:grey" class="btn btn-warning btn-circle btn-lg" type="button">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                        <% else %>
+                        <td>
+                            <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa fa-check"></i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success btn-circle btn-lg" style="background-color:#5cb85c;border-color:#5cb85c"><i class="fa  fa-check"></i>
+                            </button>
+                        </td>
+                        <% end %>
+
+
+
+                    </tr>
+                    <% end %>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
 
 </div>
 </div>
